@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class MyActivity extends Activity {
     private TextView text1;
@@ -40,7 +42,7 @@ public class MyActivity extends Activity {
 
         String sv = getSoftwareVersion();
 
-        text1.setText(app_name + ' ' + Id + ' ' + Id2 + ' ' + sv);
+        text1.setText(app_name + ' ' + Id + ' ' + Id2 + ' ' + sv + getOSVersion());
 
         button = (Button) findViewById(R.id.sumButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +84,14 @@ public class MyActivity extends Activity {
     }
 
     private void RegisterOnSite() {
-        String urlsite = "http://stden.myjino.ru/phone_id/2/app_id/5";
+
+        String app = null;
+        try {
+            app = URLEncoder.encode(getAppID(), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        String urlsite = "http://stden.myjino.ru/phone/" + getDeviceID() + "/app/" + app + "/platform/" + getOSVersion();
         t1 = (TextView) findViewById(R.id.from_site);
         try {
             URL url = new URL(urlsite);
@@ -100,6 +109,7 @@ public class MyActivity extends Activity {
             t1.setText(sb.toString());
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             t1.setText(e.getMessage());
         }
     }
@@ -118,6 +128,10 @@ public class MyActivity extends Activity {
         return Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    private String getOSVersion() {
+        return "Android_" + android.os.Build.VERSION.RELEASE;
+    }
+
     private String getSoftwareVersion() {
         PackageInfo pi;
         try {
@@ -127,6 +141,4 @@ public class MyActivity extends Activity {
             return "na";
         }
     }
-
-
 }
