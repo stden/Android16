@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <TextView
+            android:id="@id/text1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello World, MyActivity"
+            />
+    <EditText
+            android:id="@id/edit1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="222"
+            android:inputType="number"/>
+    <EditText
+            android:id="@id/edit2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="222"
+            android:inputType="number"/>
+    <Button
+            android:id="@+id/sumButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center"
+            android:textSize="30px"
+            android:padding="20px"
+            android:layout_marginTop="10dip"
+            android:text="Сумма"
+            />
+    <TextView
+            android:id="@+id/res"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:textSize="100dip"
+            android:gravity="center_horizontal"
+            android:textColor="#EEE3C4"
+            />
+    <TextView
+            android:id="@id/from_site"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="!11"
+            />
+</LinearLayout>
+
