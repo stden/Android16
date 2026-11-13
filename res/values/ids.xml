@@ -1,0 +1,6 @@
+<resources>
+    <item name="text1" type="id"/>
+    <item name="edit1" type="id"/>
+    <item name="edit2" type="id"/>
+    <item name="from_site" type="id"/>
+</resources>
